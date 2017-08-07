@@ -27,16 +27,6 @@ class RegexReplace():
         self.formatB = self.regex_to_stringformat(self.regexB)
 
     @staticmethod
-    def find_args(regex):
-        """
-        Get list of all named groups inside a regex
-
-        :param regex: a regex
-        :return: a list of all named groups
-        """
-        return
-
-    @staticmethod
     def clean_regex(regex):
         """
         Clean regexes with groups occuring multiple times
