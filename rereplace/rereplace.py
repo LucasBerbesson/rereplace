@@ -76,6 +76,3 @@ class RegexReplace():
         elif matchB:
             output = self.formatA.format_map(_FormatDict(matchB.groupdict()))
         return output
-
-
-reg = RegexReplace(r'^(?P<A>.{2})\.(?P<B>.{2})\.(?P<C>.{2})\.(?P<D>.{2})\.(?P<E>.{2})$', r'(?P<A>.{2})(?P<B>.{2})(?P<C>.{2})(?P<D>.{2})(?P<E>.{2})$')
