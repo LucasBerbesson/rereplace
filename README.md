@@ -1,6 +1,8 @@
 # Rereplace
 
 ![Travis build](https://travis-ci.org/LucasBerbesson/rereplace.svg?branch=master)
+[![PyPI version](https://badge.fury.io/py/rereplace.svg)](https://badge.fury.io/py/rereplace)
+[![codecov](https://codecov.io/gh/LucasBerbesson/rereplace/branch/master/graph/badge.svg)](https://codecov.io/gh/LucasBerbesson/rereplace)
 
 Rereplace is a module to transform a string matching a regex A into a string matching a regex B (and vice-versa).  
 It automatically detects the regex of the input and transfers it into the other regex format.  
