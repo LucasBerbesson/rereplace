@@ -24,6 +24,30 @@ ELEMENTS = [
         "regex_B": r"^(?P<C>\d{2})(?P<B>\d{2})(?P<A>\d{2})$",
         "example_A": "01.02.03",
         "example_B": "030201",
+    },
+    {
+        "regex_A": r"^(?P<A>\d{2})\.(?P<B>\d{2})\.(?P<C>\d{2})$",
+        "regex_B": r"^(?P<C>\d{2})(?P<B>\d{2})(?P<A>\d{2})$",
+        "example_A": "01.02.03",
+        "example_B": "030201",
+    },
+    {
+        "regex_A": r"^(?P<WORD>.{5})$",
+        "regex_B": r"^(?P<WORD>.{5})(?P<WORD>.{5})(?P<WORD>.{5})$",
+        "example_A": "HELLO",
+        "example_B": "HELLOHELLOHELLO",
+    },
+    {
+        "regex_A": r"^(?P<WORD1>.{3})-(?P<CODE>\d{3})-(?P<WORD2>.{4})-(?P<CODE2>\d{3})-(?P<WORD3>.{5})$",
+        "regex_B": r"^(?P<WORD1>.{3})/(?P<CODE2>\d{3})/(?P<WORD2>.{4})/(?P<CODE>\d{3})/(?P<WORD3>.{5})$",
+        "example_A": "ABC-123-ABCD-456-ABCDE",
+        "example_B": "ABC/456/ABCD/123/ABCDE",
+    },
+    {
+        "regex_A": r"^(?P<DD>\d{2})-(?P<MM>\d{2})-(?P<YYYY>\d{4})$",
+        "regex_B": r"^(?P<MM>\d{2})/(?P<DD>\d{2})/(?P<YYYY>\d{4})$",
+        "example_A": "31-12-2017",
+        "example_B": "12/31/2017",
     }
 
 ]

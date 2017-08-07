@@ -40,13 +40,13 @@ class RegexReplace():
         """
         for arg in set(args):
             new_regex = ""
-            for counter, chunk in enumerate(regex.split(arg)):
+            for counter, chunk in enumerate(regex.split("<"+arg+">")):
                 if counter == 0:
                     new_regex += chunk
                 elif counter == 1:
-                    new_regex += arg + chunk
+                    new_regex += "<"+arg+">" + chunk
                 else:
-                    new_regex += "{}_occurence_{}{}".format(arg,counter,chunk)
+                    new_regex += "<{}_occurence_{}>{}".format(arg,counter,chunk)
             regex = new_regex
         return regex
 
