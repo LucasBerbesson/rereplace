@@ -9,7 +9,7 @@ It automatically detects the regex of the input and transfers it into the other 
 
 You just need to write down 2 correct regexes with matching named groups and the package will handle the transformations.
  
-Here is  [a good site](https://pythex.org/) to try your regexes.
+Here is  [a good site](https://pythex.org/) to try Python regexes.
 
 Works with Python 3+
 
