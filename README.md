@@ -7,7 +7,9 @@
 Rereplace is a module to transform a string matching a regex A into a string matching a regex B (and vice-versa).  
 It automatically detects the regex of the input and transfers it into the other regex format.  
 
-You just need to write down 2 correct regexes with matching named groups and the package will handle the transformations. 
+You just need to write down 2 correct regexes with matching named groups and the package will handle the transformations.
+ 
+Here is  [a good site](https://pythex.org/) to try your regexes.
 
 Works with Python 3+
 
