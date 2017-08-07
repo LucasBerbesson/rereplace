@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 __version__ = '1.0.0'
 
@@ -11,6 +11,17 @@ setup(
     author_email='lucas.berbesson@fabdev.fr',
     url='https://github.com/LucasBerbesson/rereplace',
     download_url='https://github.com/LucasBerbesson/rereplace/archive/0.1.tar.gz',
-    keywords=['python', 'regex', 'replace','sub'],
-    classifiers=[],
+    keywords=['python', 'regex', 'replace', 'sub'],
+    license='MIT',
+    python_requires='>=3',
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.2",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+    ],
+    tests_require=[
+        'pytest',
+    ]
 )
