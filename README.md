@@ -9,6 +9,8 @@ It automatically detects the regex of the input and transfers it into the other 
 
 You just need to write down 2 correct regexes with matching named groups and the package will handle the transformations. 
 
+Works with Python 3+
+
 # Getting started
 
 ```
