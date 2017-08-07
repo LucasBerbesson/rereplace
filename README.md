@@ -1,5 +1,7 @@
 # Rereplace
 
+![Travis build](https://travis-ci.org/LucasBerbesson/rereplace.svg?branch=master)
+
 Rereplace is a module to transform a string matching a regex A into a string matching a regex B (and vice-versa).  
 It automatically detects the regex of the input and transfers it into the other regex format.  
 
