@@ -20,24 +20,28 @@ class RegexReplace():
         self.regexA = regexA
         self.regexB = regexB
 
-        self.argsA = self.find_args(regexA)
-        self.argsB = self.find_args(regexB)
-
-        self.cleaned_regexA = self.clean_regex(regexA, self.argsA)
-        self.cleaned_regexB = self.clean_regex(regexB, self.argsB)
+        self.cleaned_regexA = self.clean_regex(regexA)
+        self.cleaned_regexB = self.clean_regex(regexB)
 
         self.formatA = self.regex_to_stringformat(self.regexA)
         self.formatB = self.regex_to_stringformat(self.regexB)
 
     @staticmethod
     def find_args(regex):
-        return re.findall(r'\<([^\)]+)\>', regex)
+        """
+        Get list of all named groups inside a regex
+
+        :param regex: a regex
+        :return: a list of all named groups
+        """
+        return
 
     @staticmethod
-    def clean_regex(regex, args):
+    def clean_regex(regex):
         """
         Clean regexes with groups occuring multiple times
         """
+        args = re.findall(r'\<([^\)]+)\>', regex)
         for arg in set(args):
             new_regex = ""
             for counter, chunk in enumerate(regex.split("<"+arg+">")):
@@ -53,7 +57,7 @@ class RegexReplace():
     @staticmethod
     def regex_to_stringformat(regex):
         """
-        Transforms a regex to a string format
+        Transforms a regex into a  formatted string
 
         >>> regex_to_stringformat(r'^(?P<SiteA>.{5})L(?P<U>\d)(?P<N>\d)(?P<SiteB>.{5})')
         '{SiteA}L{U}{N}{SiteB}'
@@ -66,7 +70,7 @@ class RegexReplace():
 
     def replace(self, input):
         """
-        transforms a string matching regexA into a string matching regexB and vice-versa.
+        Transforms a string matching regexA into a string matching regexB and vice-versa.
         """
         matchA = re.match(self.cleaned_regexA, input)
         matchB = re.match(self.cleaned_regexB, input)
