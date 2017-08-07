@@ -9,6 +9,6 @@ install:
   - pip install tox-travis
   - pip install codecov
 script:
-  - pytest
+  - python -m pytest
 after_success:
   - codecov
