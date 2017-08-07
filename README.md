@@ -57,3 +57,6 @@ rer.replace("31-12-2017")
 rer.replace("12/31/2017")
 # => "31-12-2017"
 ```
+
+
+## Lightweight,tested, no dependency
