@@ -48,9 +48,10 @@ ELEMENTS = [
         "regex_B": r"^(?P<MM>\d{2})/(?P<DD>\d{2})/(?P<YYYY>\d{4})$",
         "example_A": "31-12-2017",
         "example_B": "12/31/2017",
-    }
+    },
 
 ]
+
 
 
 def test_rereplace():
@@ -59,3 +60,11 @@ def test_rereplace():
         assert rer.replace(element['example_A']) == element['example_B']
         assert rer.replace(element['example_B']) == element['example_A']
 
+
+
+def test_missing():
+    rer =  RegexReplace(r"^(?P<DD>\d{2})-(?P<MM>\d{2})-(?P<YYYY>\d{4})$",
+                        r"^(?P<MM>\d{2})/(?P<YYYY>\d{4})$")
+
+    assert rer.replace("31-12-2017") == "12/2017"
+    assert rer.replace("12/2017") == "{DD}-12-2017"
