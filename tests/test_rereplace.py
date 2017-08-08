@@ -49,22 +49,26 @@ ELEMENTS = [
         "example_A": "31-12-2017",
         "example_B": "12/31/2017",
     },
+    {
+        "regex_A": r"^(?P<WORD1>.{3})-(?P<CODE1>\d{3})-(?P<WORD2>.{4})-(?P<CODE2>\d{3})$",
+        "regex_B": r"^(?P<CODE1>\d{3})-(?P<CODE2>\d{3})-(?P<WORD1>.{3})-(?P<WORD2>.{4})$",
+        "example_A": "ABC-123-DEFG-456",
+        "example_B": "123-456-ABC-DEFG",
+    }
 
 ]
 
 
-
 def test_rereplace():
     for element in ELEMENTS:
-        rer = RegexReplace(element['regex_A'],element['regex_B'])
+        rer = RegexReplace(element['regex_A'], element['regex_B'])
         assert rer.replace(element['example_A']) == element['example_B']
         assert rer.replace(element['example_B']) == element['example_A']
 
 
-
 def test_missing():
-    rer =  RegexReplace(r"^(?P<DD>\d{2})-(?P<MM>\d{2})-(?P<YYYY>\d{4})$",
-                        r"^(?P<MM>\d{2})/(?P<YYYY>\d{4})$")
+    rer = RegexReplace(r"^(?P<DD>\d{2})-(?P<MM>\d{2})-(?P<YYYY>\d{4})$",
+                       r"^(?P<MM>\d{2})/(?P<YYYY>\d{4})$")
 
     assert rer.replace("31-12-2017") == "12/2017"
     assert rer.replace("12/2017") == "{DD}-12-2017"

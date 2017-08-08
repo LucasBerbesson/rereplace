@@ -29,42 +29,49 @@ rer.replace("0201")
 # => 01.02
 ```
 
-It is also possible to reuse some named groups multiple times (unlike the python re module) : 
+# Examples : 
+
+
+The main usage is to change order of elements inside a string :
 
 ```python
 
 from rereplace import RegexReplace
-rer = RegexReplace(r"^(?P<WORD>.{5})$",r"^(?P<WORD>.{5})(?P<WORD>.{5})(?P<WORD>.{5})$")
-rer.replace("HELLO")
-# => HELLOHELLOHELLO
-rer.replace("HELLOHELLOHELLO")
-# => HELLO
+rer = RegexReplace(
+                    r"^(?P<WORD1>.{3})-(?P<CODE1>\d{3})-(?P<WORD2>.{4})-(?P<CODE2>\d{3})$",
+                    r"^(?P<CODE1>\d{3})-(?P<CODE2>\d{3})-(?P<WORD1>.{3})-(?P<WORD2>.{4})$"
+                   )
+rer.replace("ABC-123-DEFG-456")
+# => 123-456-ABC-DEFG
+rer.replace("123-456-ABC-DEFG")
+# => ABC-123-DEFG-456
 ```
 
-Other examples : 
 
-```python
-
-from rereplace import RegexReplace
-rer = RegexReplace(r"^(?P<WORD1>.{3})-(?P<CODE>\d{3})-(?P<WORD2>.{4})-(?P<CODE2>\d{3})-(?P<WORD3>.{5})$",
-                    r"^(?P<WORD1>.{3})/(?P<CODE2>\d{3})/(?P<WORD2>.{4})/(?P<CODE>\d{3})/(?P<WORD3>.{5})$")
-rer.replace("ABC-123-ABCD-456-ABCDE")
-# => ABC/456/ABCD/123/ABCDE
-rer.replace("ABC/456/ABCD/123/ABCDE")
-# => ABC-123-ABCD-456-ABCDE
-```
-
+If the two regexes do not contain the same named groups, the transformation will generate formatted strings like so :  
 
 ```python
 
 from rereplace import RegexReplace
 rer = RegexReplace(r"^(?P<DD>\d{2})-(?P<MM>\d{2})-(?P<YYYY>\d{4})$",
-                    r"^(?P<MM>\d{2})/(?P<DD>\d{2})/(?P<YYYY>\d{4})$")
+                    r"^(?P<MM>\d{2})-(?P<YYYY>\d{4})$")
 rer.replace("31-12-2017")
-# => "12/31/2017"
-rer.replace("12/31/2017")
-# => "31-12-2017"
+# => "12-2017"
+rer.replace("12-2017")
+# => "{DD}-12-2017"
 ```
 
+It is also possible to reuse some named groups multiple times (unlike the python re module) : 
 
-## Lightweight,tested, no dependency
+```python
+
+from rereplace import RegexReplace
+rer = RegexReplace(
+                    r"^(?P<WORD>.{5})$",
+                    r"^(?P<WORD>.{5})-XX-(?P<WORD>.{5})-XX-(?P<WORD>.{5})$"
+                   )
+rer.replace("HELLO")
+# => HELLO-XX-HELLO-XX-HELLO
+rer.replace("HELLO-XX-HELLO-XX-HELLO")
+# => HELLO
+```
